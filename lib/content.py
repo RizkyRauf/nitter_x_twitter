@@ -63,7 +63,19 @@ class TwitterContent:
     def get_link_post(self):
         xpath_link = './/a[@class="tweet-link"]'
         link_element = self.find_element(xpath_link)
-        return link_element.get_attribute("href") if link_element else ""
+
+        if link_element is not None:
+            try:
+                link = link_element.get_attribute("href")
+                if link:
+                    link = link.replace("https://nitter.net/", "https://twitter.com/").replace("#m", "")
+                    return link
+            except Exception as e:
+                print(f"Error extracting link: {e}")
+
+        # Return a sentinel value (e.g., None) if the element or attribute is not found
+        return None
+
 
     def to_json_entry(self):
         data = {
