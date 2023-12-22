@@ -46,19 +46,37 @@ class TwitterContent:
         xpath_comment_container = './/span[@class="icon-comment"]/parent::div[@class="icon-container"]'
         comment_container_element = self.find_element(xpath_comment_container)
         comment_text = comment_container_element.text.strip() if comment_container_element else ""
-        return int(comment_text.replace(',', '')) if comment_text else 0
+        
+        try:
+            comment_count = int(comment_text.replace(',', '')) if comment_text.isdigit() else 0
+            return comment_count
+        except ValueError:
+            print(f"Error converting '{comment_text}' to an integer.")
+            return 0
 
     def get_retweet_count(self):
         xpath_retweet_container = './/span[@class="icon-retweet"]/parent::div[@class="icon-container"]'
         retweet_container_element = self.find_element(xpath_retweet_container)
         retweet_text = retweet_container_element.text.strip() if retweet_container_element else ""
-        return int(retweet_text.replace(',', '')) if retweet_text else 0
+
+        try:
+            retweet_count = int(retweet_text.replace(',', '')) if retweet_text.isdigit() else 0
+            return retweet_count
+        except ValueError:
+            print(f"Error converting '{retweet_text}' to an integer.")
+            return 0
 
     def get_like_count(self):
         xpath_like_container = './/span[@class="icon-heart"]/parent::div[@class="icon-container"]'
         like_container_element = self.find_element(xpath_like_container)
         like_text = like_container_element.text.strip() if like_container_element else ""
-        return int(like_text.replace(',', '')) if like_text else 0
+        
+        try:
+            like_count = int(like_text.replace(',', '')) if like_text.isdigit() else 0
+            return like_count
+        except ValueError:
+            print(f"Error converting '{like_text}' to an integer.")
+            return 0
 
     def get_link_post(self):
         xpath_link = './/a[@class="tweet-link"]'
@@ -73,7 +91,6 @@ class TwitterContent:
             except Exception as e:
                 print(f"Error extracting link: {e}")
 
-        # Return a sentinel value (e.g., None) if the element or attribute is not found
         return None
 
 

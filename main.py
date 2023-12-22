@@ -11,11 +11,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Check if start and end are provided, otherwise set default values
-    if not args.start:
-        args.start = ""
-
-    if not args.end:
-        args.end = ""
 
     NitterTwitterScraper.run_scraper(args.key, args.start, args.end, args.lang)
