@@ -78,33 +78,31 @@ USER_AGENTS = [
     'Mozilla/5.0 (X11; CrOS x86_64 14695.25.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5002.0 Safari/537.36'
 ]
 
-def getRandomUserAgent():
+def get_RandomUserAgent():
     agent = random.choice(USER_AGENTS)
     return agent
 
 def load_more(driver):
     xpath_load_more = '//*[@class="show-more"]/a'
-    # Check if the "Load more" button is clickable
+    # Check if the " load more" button is clickable
     load_more_button = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, xpath_load_more))
-    )
+        EC.element_to_be_clickable((By.XPATH, xpath_load_more)))
     
     try:
         if load_more_button.is_enabled():
-            # Click on the "Load more" button
             load_more_button.click()
             return True
         else:
-            print("Load more button is not clickable. No more content to load.")
+            print("Load more button is not clickable")
             return False
-
+        
     except:
-        print("Timeout: Element 'Load more' not clickable within 10 seconds.")
+        print("Timeout: element 'Load More' not clickable within 10 seconds.")
         return False
-
+    
 def scroll_down(driver):
     content_section_element = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, "//div[@class='timeline-item ']"))
+        EC.presence_of_all_elements_located((By.XPATH, "//div[@class='timeline-item ']"))
     )
     previous_height = driver.execute_script("return arguments[0].scrollHeight", content_section_element)
     while True:
