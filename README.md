@@ -39,7 +39,11 @@ python main.py --key "Python" --start "2022-01-01" --end "2022-12-31" --lang "in
 Contoh ini akan mengambil tweet terkait "Python" yang diposting antara 1 Januari 2022 hingga 31 Desember 2022 dalam bahasa Indonesia.
 
 ## Berkas
-[``content.py``](content.py): Berisi kelas TwitterContent, yang mewakili struktur sebuah tweet dan menyediakan metode untuk mengekstrak berbagai informasi.
-[``run.py``](run.py): Mengimplementasikan kelas TwitterXScraper, yang mengonfigurasi proses web scraping dan menjalankan scraping berdasarkan parameter yang diberikan.
-[``util.py``](util.py): Termasuk fungsi utilitas seperti menghasilkan agen pengguna acak, menangani aksi "load more," dan menggulir halaman.
-[``main.py``](main.py): Skrip utama untuk menjalankan TwitterXScraper, menguraikan argumen baris perintah, dan memulai proses scraping.
+
+- [``content.py``](./lib/content.py): Berisi kelas `TwitterContent`, yang mewakili struktur sebuah tweet dan menyediakan metode untuk mengekstrak berbagai informasi.
+
+- [``run.py``](./lib/run.py): Mengimplementasikan kelas `TwitterXScraper`, yang mengonfigurasi proses web scraping dan menjalankan scraping berdasarkan parameter yang diberikan.
+
+- [``util.py``](./lib/util.py): Termasuk fungsi utilitas seperti menghasilkan agen pengguna acak, menangani aksi "load more," dan menggulir halaman.
+
+- [``main.py``](main.py): Skrip utama untuk menjalankan TwitterXScraper, menguraikan argumen baris perintah, dan memulai proses scraping.
