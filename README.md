@@ -31,12 +31,17 @@
 - `--end`: Tanggal akhir dalam format YYYY-MM-DD.
 - `--lang`: Bahasa pencarian. Default adalah 'all'.
 
-### Contoh
+## Contoh
 
 ```bash
 python main.py --key "Python" --start "2022-01-01" --end "2022-12-31" --lang "indonesia"
 ```
-Contoh ini akan mengambil tweet terkait "Python" yang diposting antara 1 Januari 2022 hingga 31 Desember 2022 dalam bahasa Indonesia.
+Contoh di atas akan mengambil tweet dan mengumpulkan data dari semua postingan, termasuk balasan (replays) dan retweet.
+
+```bash
+python main.py --key "Python" --start "2022-01-01" --end "2022-12-31" --lang "indonesia" --retweets
+```
+Contoh di atas akan mengambil tweet dan mengumpulkan data hanya dari postingan asli, tanpa memasukkan retweet.
 
 ## Berkas
 
